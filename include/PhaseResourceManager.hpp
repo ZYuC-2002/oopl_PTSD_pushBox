@@ -20,10 +20,8 @@ class PhaseResourceManager {
 public:
 	PhaseResourceManager();
 
-	//void SetRoot(Util::GameObject& root);
-
 	[[nodiscard]] std::vector<std::shared_ptr<Util::GameObject>> GetChildren() const {
-		return { m_Background };
+		return { m_TaskText, m_Background };
 	}
 	[[nodiscard]] std::vector<std::shared_ptr<Character>> GetLevelBoxes() const;
 
@@ -45,11 +43,12 @@ public:
 	void ShowNextLevelBox();
 
 private:
+	std::shared_ptr<TaskText> m_TaskText;
 	std::shared_ptr<BackgroundImage> m_Background;
 	std::vector<std::shared_ptr<Character>> m_LevelBoxes;
 
 	Util::Renderer m_pRoot;
-	int m_Phase = 0;    // 0: menu
+	int m_Phase = 0;    // 0: menu; 1: SelectLevel
 
 	int m_AddedBoxCount = 0;
 	static const int MAX_BOXES = 30;

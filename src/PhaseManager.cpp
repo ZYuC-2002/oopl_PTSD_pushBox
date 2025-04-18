@@ -7,7 +7,7 @@
 
 PhaseResourceManager::PhaseResourceManager() {
     std::cout << "Initializing PhaseResourceManager" << std::endl;
-    //m_TaskText = std::make_shared<TaskText>();
+    m_TaskText = std::make_shared<TaskText>();
     m_Background = std::make_shared<BackgroundImage>();
 }
 
@@ -17,6 +17,12 @@ void PhaseResourceManager::NextPhase() {
 		std::cout << "CreateLevelBoxes()" << std::endl;
 		CreateLevelBoxes();
 	}
+
+	// 第一關是m_Phase=2 -> m_Phase=1時執行
+	//if (m_Phase >= 1) {
+		//std::cout << "執行m_TaskText->NextPhase(" << m_Phase << ")" << std::endl;
+		m_TaskText->NextPhase(m_Phase);
+	//}
 
     std::cout << "Now phase: " << m_Phase << std::endl;
     m_Phase++;

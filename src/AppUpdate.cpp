@@ -122,6 +122,9 @@ void App::Update() {
 
             m_PRM->ShowLevelBoxes(false); // 所有關卡箱子消失
 
+            btn_return->SetVisible(true);
+            btn_reset->SetVisible(true);
+
             // 根據選擇的關卡設置相應的階段並初始化地圖
             switch (m_SelectedLevel) {
                 //m_Phase設在前一關，執行ValidTask()時會跳到下一關
@@ -181,12 +184,15 @@ void App::Update() {
         }
     }
 
-    /* 遊戲中返回關卡選擇畫面 */
+    
     else if (m_Phase != Phase::MENU && m_Phase != Phase::LEVELSELECT) {
+        
+        /* 遊戲中返回關卡選擇畫面 */
         if (Util::Input::IsKeyPressed(Util::Keycode::BACKSPACE) ||
             (mouseLeftButtonDown && Util::Input::GetCursorPosition().x < -130 && Util::Input::GetCursorPosition().y < -270)) {
 
             btn_return->SetVisible(false); // 返回鍵消失
+            btn_reset->SetVisible(false); // 重置鍵消失
 			
             // 回去LEVELSELECT (按下Backspace鍵或點擊左上角區域)
             m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
@@ -216,7 +222,19 @@ void App::Update() {
 
             keyProcessed = true; // 有按過按鍵了
         }
+
+        /* 重置 */
+        else if (mouseLeftButtonDown && Util::Input::GetCursorPosition().x < 130 && Util::Input::GetCursorPosition().y < -270) {
+            //m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
+            //m_Phase = ___;
+            //InitializeMap(___);
+            //BoxPass = 1; // ???
+            //m_PhaseChanged = true;
+        }
     }
+
+    
+
 
     /* 遊戲 */
     bool needUpdate = false;

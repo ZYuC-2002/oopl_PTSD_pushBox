@@ -14,12 +14,6 @@ void App::ValidTask() {
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_level.png");
 				m_PRM->ShowLevelBoxes(true);  // 顯示箱子
 				m_PRM->NextPhase();
-
-				btn_return = std::make_shared<Character>(RESOURCE_DIR"/Button/btn_return.png");
-				m_Root.AddChild(btn_return);
-				btn_return->SetZIndex(50);
-				btn_return->SetPosition({ -155, 295 });
-				btn_return->SetVisible(false);
 				
 				m_Phase = Phase::LEVELSELECT;
 				m_PhaseChanged = true;
@@ -41,8 +35,6 @@ void App::ValidTask() {
 				std::cout << "LEVELSELECT to LEVEL1" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->ShowLevelBoxes(false);
-				
-				btn_return->SetVisible(true);
 
 				//m_PRM->ShowNextLevelBox();
 				m_PRM->NextPhase();
@@ -93,16 +85,6 @@ void App::ValidTask() {
 				break;
 
 			case Phase::LEVEL5:
-				std::cout << "LEVEL4 to LEVEL5" << std::endl;
-				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
-				m_PRM->NextPhase();
-				m_Phase = Phase::LEVEL5;
-				InitializeMap(GameMap5);
-				BoxPass = 2;
-				m_PhaseChanged = true;
-				break;
-
-			case Phase::LEVEL6:
 				std::cout << "LEVEL5 to LEVEL6" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
@@ -112,7 +94,7 @@ void App::ValidTask() {
 				m_PhaseChanged = true;
 				break;
 
-			case Phase::LEVEL7:
+			case Phase::LEVEL6:
 				std::cout << "LEVEL6 to LEVEL7" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
@@ -122,7 +104,7 @@ void App::ValidTask() {
 				m_PhaseChanged = true;
 				break;
 
-			case Phase::LEVEL8:
+			case Phase::LEVEL7:
 				std::cout << "LEVEL7 to LEVEL8" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
@@ -132,7 +114,7 @@ void App::ValidTask() {
 				m_PhaseChanged = true;
 				break;
 
-			case Phase::LEVEL9:
+			case Phase::LEVEL8:
 				std::cout << "LEVEL8 to LEVEL9" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
@@ -142,7 +124,7 @@ void App::ValidTask() {
 				m_PhaseChanged = true;
 				break;
 
-			case Phase::LEVEL10:
+			case Phase::LEVEL9:
 				std::cout << "LEVEL9 to LEVEL10" << std::endl;
 				m_PRM->SetImage(RESOURCE_DIR"/Background/bg_game.png");
 				m_PRM->NextPhase();
